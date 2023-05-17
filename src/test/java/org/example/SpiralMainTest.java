@@ -25,7 +25,7 @@ public class SpiralMainTest {
         List<Integer> expectedArray = new ArrayList<>(
                 Arrays.asList(1, 2, 3, 4, 5, 10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 7, 8, 9, 14, 19, 18, 17, 12, 13));
 
-        List<Integer> result = SpiralMain.SpiralOrder(matrixBox);
+        List<Integer> result = SpiralMain.spiralOrder(matrixBox);
         Assert.assertEquals(expectedArray, result);
     }
 
@@ -43,7 +43,7 @@ public class SpiralMainTest {
         List<Integer> expectedArray = new ArrayList<>(
                 Arrays.asList(1, 2, 3, 4, 5, 10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 7, 8, 9, 14, 19, 18, 17, 12, 13));
 
-        List<Integer> result = SpiralMain.SpiralOrder(matrixBox);
+        List<Integer> result = SpiralMain.spiralOrder(matrixBox);
         Assert.assertEquals(expectedArray, result);
     }
 
@@ -58,7 +58,7 @@ public class SpiralMainTest {
         List<Integer> expectedArray = new ArrayList<>(
                 Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 16, 24, 23, 22, 21, 20, 19, 18, 17, 9, 10, 11, 12, 13, 14, 15));
 
-        List<Integer> result = SpiralMain.SpiralOrder(matrixBox);
+        List<Integer> result = SpiralMain.spiralOrder(matrixBox);
         Assert.assertEquals(expectedArray, result);
     }
 
@@ -75,7 +75,7 @@ public class SpiralMainTest {
         List<Integer> expectedArray = new ArrayList<>(
                 Arrays.asList(1, 2, 4, 6, 8, 10, 9, 7, 5, 3));
 
-        List<Integer> result = SpiralMain.SpiralOrder(matrixBox);
+        List<Integer> result = SpiralMain.spiralOrder(matrixBox);
         Assert.assertEquals(expectedArray, result);
     }
 }
