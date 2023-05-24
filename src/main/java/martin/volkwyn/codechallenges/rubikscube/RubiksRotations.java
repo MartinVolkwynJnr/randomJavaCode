@@ -1,8 +1,6 @@
 package martin.volkwyn.codechallenges.rubikscube;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class RubiksRotations {
 
@@ -14,42 +12,6 @@ public class RubiksRotations {
                     .map(arr -> Arrays.copyOf(arr, arr.length)).toArray(int[][]::new);
         }
         return clonedCubeState;
-    }
-
-    public CubeState rotate(CubeState cubeState, boolean clockwise, CubeSide cubeSideRotate, Map<CubeSide,CubeSide> rotationRule, RowColumnIndex[] numRows, RowColumnIndex[] numColumns) {
-        int[][][] clonedCubeState = getDeepCloneCubeState(cubeState);
-        
-        rotationRule.forEach((key, value) -> {
-            System.out.println("Rotation Rule Key : Value -> " + key + " " + value);
-
-            if (cubeSideRotate != CubeSide.UPPER || cubeSideRotate != CubeSide.DOWN){
-                if (numRows.length == 3 && numColumns.length == 1){
-                    clonedCubeState[key.ordinal()][numRows[0].ordinal()][numColumns[0].ordinal()]
-                            = cubeState.getCubeState3DArray()[value.ordinal()][numRows[0].ordinal()][numColumns[0].ordinal()];
-                    clonedCubeState[key.ordinal()][numRows[1].ordinal()][numColumns[0].ordinal()]
-                            = cubeState.getCubeState3DArray()[value.ordinal()][numRows[1].ordinal()][numColumns[0].ordinal()];
-                    clonedCubeState[key.ordinal()][numRows[2].ordinal()][numColumns[0].ordinal()]
-                            = cubeState.getCubeState3DArray()[value.ordinal()][numRows[2].ordinal()][numColumns[0].ordinal()];
-                }
-                else if (numRows.length == 1 && numColumns.length == 3){
-                    clonedCubeState[key.ordinal()][numRows[0].ordinal()][numColumns[0].ordinal()]
-                            = cubeState.getCubeState3DArray()[value.ordinal()][numRows[0].ordinal()][numColumns[0].ordinal()];
-                    clonedCubeState[key.ordinal()][numRows[0].ordinal()][numColumns[1].ordinal()]
-                            = cubeState.getCubeState3DArray()[value.ordinal()][numRows[0].ordinal()][numColumns[1].ordinal()];
-                    clonedCubeState[key.ordinal()][numRows[0].ordinal()][numColumns[2].ordinal()]
-                            = cubeState.getCubeState3DArray()[value.ordinal()][numRows[0].ordinal()][numColumns[2].ordinal()];
-                }
-            }
-
-        });
-
-        // 9 Squares rotating same side
-        rotateSingleSide9Pieces(clonedCubeState, cubeState, cubeSideRotate, clockwise);
-
-        CubeState newCubeStateObj = new CubeState();
-        newCubeStateObj.setCubeState3DArray(clonedCubeState);
-
-        return newCubeStateObj;
     }
 
     public int[][][] rotateSide(int[][][] clonedCubeState,CubeState cubeState,int[] rotatingSides, int[] movingPiece1,
@@ -65,28 +27,26 @@ public class RubiksRotations {
 
     public int[][][] rotateSingleSide9Pieces(int[][][] clonedCubeState, CubeState cubeState, CubeSide cubeSideRotate, boolean clockwise) {
         // 9 Squares rotating same side
-        if (!clockwise) {
-            // counterclockwise
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.FIRST.ordinal()][RowColumnIndex.FIRST.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.FIRST.ordinal()][RowColumnIndex.LAST.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.FIRST.ordinal()][RowColumnIndex.MID.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.MID.ordinal()][RowColumnIndex.LAST.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.FIRST.ordinal()][RowColumnIndex.LAST.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.LAST.ordinal()][RowColumnIndex.LAST.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.MID.ordinal()][RowColumnIndex.FIRST.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.FIRST.ordinal()][RowColumnIndex.MID.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.MID.ordinal()][RowColumnIndex.MID.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.MID.ordinal()][RowColumnIndex.MID.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.MID.ordinal()][RowColumnIndex.LAST.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.LAST.ordinal()][RowColumnIndex.MID.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.LAST.ordinal()][RowColumnIndex.FIRST.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.FIRST.ordinal()][RowColumnIndex.FIRST.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.LAST.ordinal()][RowColumnIndex.MID.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.MID.ordinal()][RowColumnIndex.FIRST.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.LAST.ordinal()][RowColumnIndex.LAST.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.LAST.ordinal()][RowColumnIndex.FIRST.ordinal()];
+        if (clockwise) {
+            clonedCubeState[cubeSideRotate.ordinal()][0][0] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][2][0];
+            clonedCubeState[cubeSideRotate.ordinal()][0][1] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][1][0];
+            clonedCubeState[cubeSideRotate.ordinal()][0][2] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][0][0];
+            clonedCubeState[cubeSideRotate.ordinal()][1][0] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][2][1];
+            clonedCubeState[cubeSideRotate.ordinal()][1][1] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][1][1];
+            clonedCubeState[cubeSideRotate.ordinal()][1][2] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][0][1];
+            clonedCubeState[cubeSideRotate.ordinal()][2][0] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][2][2];
+            clonedCubeState[cubeSideRotate.ordinal()][2][1] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][1][2];
+            clonedCubeState[cubeSideRotate.ordinal()][2][2] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][0][2];
         } else {
-            // clockwise
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.FIRST.ordinal()][RowColumnIndex.FIRST.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.LAST.ordinal()][RowColumnIndex.FIRST.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.FIRST.ordinal()][RowColumnIndex.MID.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.MID.ordinal()][RowColumnIndex.FIRST.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.FIRST.ordinal()][RowColumnIndex.LAST.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.FIRST.ordinal()][RowColumnIndex.FIRST.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.MID.ordinal()][RowColumnIndex.FIRST.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.LAST.ordinal()][RowColumnIndex.MID.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.MID.ordinal()][RowColumnIndex.MID.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.MID.ordinal()][RowColumnIndex.MID.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.MID.ordinal()][RowColumnIndex.LAST.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.FIRST.ordinal()][RowColumnIndex.MID.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.LAST.ordinal()][RowColumnIndex.FIRST.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.LAST.ordinal()][RowColumnIndex.LAST.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.LAST.ordinal()][RowColumnIndex.MID.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.MID.ordinal()][RowColumnIndex.LAST.ordinal()];
-            clonedCubeState[cubeSideRotate.ordinal()][RowColumnIndex.LAST.ordinal()][RowColumnIndex.LAST.ordinal()] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][RowColumnIndex.FIRST.ordinal()][RowColumnIndex.LAST.ordinal()];
+            clonedCubeState[cubeSideRotate.ordinal()][0][0] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][0][2];
+            clonedCubeState[cubeSideRotate.ordinal()][0][1] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][1][2];
+            clonedCubeState[cubeSideRotate.ordinal()][0][2] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][2][2];
+            clonedCubeState[cubeSideRotate.ordinal()][1][0] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][0][1];
+            clonedCubeState[cubeSideRotate.ordinal()][1][1] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][1][1];
+            clonedCubeState[cubeSideRotate.ordinal()][1][2] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][2][1];
+            clonedCubeState[cubeSideRotate.ordinal()][2][0] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][0][0];
+            clonedCubeState[cubeSideRotate.ordinal()][2][1] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][1][0];
+            clonedCubeState[cubeSideRotate.ordinal()][2][2] = cubeState.getCubeState3DArray()[cubeSideRotate.ordinal()][2][0];
         }
         return clonedCubeState;
     }

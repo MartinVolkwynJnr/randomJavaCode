@@ -12,16 +12,14 @@ public class RubikCycle {
 
     public static void main(String[] args) {
         RubikCycle rubikCycle = new RubikCycle();
-        String input = "DdD";
+        String input = "LRUDBFlrudbf";
         rubikCycle.cubeState.setDefaultSolvedCube();
 
-        System.out.println("CUBE STATE Front- " + rubikCycle.cubeState);
+
 
         int result = rubikCycle.getNumberOfSequenceRequiredToOriginalState(input);
 
 
-        System.out.println("----------------- ");
-        System.out.println("CUBE STATE Front- " + rubikCycle.cubeState);
 
         System.out.println("Input = " + input + ", " + "Should repeat " + result + " times to get the orginal state");
     }
@@ -33,24 +31,32 @@ public class RubikCycle {
 
         RotationRules rotationRules = new RotationRules();
 
-        while (!cubeSolved) {
+        for (int i = 0; i < input.length(); i++) {
+            // accessing each char
+            char x = input.charAt(i);
+            System.out.println(x);
+            cubeState = rotationRules.rotateSideProvidedLetter(x,cubeState);
 
-            //looping through each char
-            for (int i = 0; i < input.length(); i++) {
-                // accessing each char
-                char x = input.charAt(i);
-                System.out.println(x);
-                cubeState = rotationRules.rotateSideProvidedLetter(x,cubeState);
-            }
-
-            count++;
-            if (Arrays.deepEquals(clonedCubeStateOriginal,this.cubeState.getCubeState3DArray())){
-                cubeSolved = true;
-            }
-            else if (count> 10000){
-                cubeSolved = true;
-            }
+            System.out.println("CUBE STATE After - " + x + " \n " + cubeState);
         }
+        System.out.println("CUBE STATE After- " + cubeState);
+//        while (!cubeSolved) {
+//            count++;
+//            System.out.println("----------------- ");
+//            System.out.println("CUBE STATE Before- " + cubeState);
+//            //looping through each char
+//            for (int i = 0; i < input.length(); i++) {
+//                // accessing each char
+//                char x = input.charAt(i);
+//                cubeState = rotationRules.rotateSideProvidedLetter(x,cubeState);
+//            }
+//
+//            System.out.println("CUBE STATE After- " + cubeState);
+//
+//            if (Arrays.deepEquals(clonedCubeStateOriginal,cubeState.getCubeState3DArray()) || count > 10000){
+//                cubeSolved = true;
+//            }
+//        }
         return count;
     }
 }

@@ -14,18 +14,21 @@ public class CubeState {
     @Override
     public String toString() {
         String[][][] colourCube = new String[6][3][3];
-
+        String output = "";
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 3 ; j++) {
                 for (int k = 0; k < 3; k++) {
                     colourCube[i][j][k] = CubeColours.values()[cubeState3DArray[i][j][k]].name();
                 }
+
             }
+            output += "  ---------   \n";
+            output += Arrays.deepToString(colourCube[i][0]) + "\n";
+            output += Arrays.deepToString(colourCube[i][1]) + "\n";
+            output += Arrays.deepToString(colourCube[i][2]) + "\n";
         }
 
-        return "CubeState{" +
-                "cubeState3DArray= " + Arrays.deepToString(colourCube) +
-                '}';
+        return "CubeState = \n" + output ;
     }
 
     public CubeState() {
