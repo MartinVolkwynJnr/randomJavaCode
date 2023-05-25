@@ -39,7 +39,7 @@ public class RotationRules {
                 clonedCubeState = rubiksRotations.rotateSide(clonedCubeState, cubeState, new int[]{CubeSide.BACK.ordinal(), CubeSide.LEFT.ordinal()},
                         lastRowOrColumn, // move RowIndex
                         threeRowsOrColumns, // move ColumnIndex
-                        threeRowsOrColumns, // new RowIndex
+                        threeRowsOrColumnsReverse, // new RowIndex
                         lastRowOrColumn // new RowIndex
                 );
 
@@ -133,7 +133,7 @@ public class RotationRules {
                         cubeState, new int[]{CubeSide.FRONT.ordinal(), CubeSide.DOWN.ordinal()},
                         threeRowsOrColumns, // move RowIndex
                         lastRowOrColumn, // move ColumnIndex
-                        threeRowsOrColumns, // move RowIndex
+                        threeRowsOrColumnsReverse, // move RowIndex
                         firstRowOrColumn // move ColumnIndex
                 );
 
@@ -149,7 +149,7 @@ public class RotationRules {
                         cubeState, new int[]{CubeSide.BACK.ordinal(), CubeSide.UPPER.ordinal()},
                         threeRowsOrColumns, // move RowIndex
                         lastRowOrColumn, // move ColumnIndex
-                        threeRowsOrColumnsReverse, // new RowIndex
+                        threeRowsOrColumns, // new RowIndex
                         lastRowOrColumn // new RowIndex
                 );
 
@@ -235,8 +235,8 @@ public class RotationRules {
                 clonedCubeState = rubiksRotations.rotateSide(clonedCubeState, cubeState, new int[]{CubeSide.LEFT.ordinal(), CubeSide.BACK.ordinal()},
                         threeRowsOrColumns, // move RowIndex
                         lastRowOrColumn, // move ColumnIndex
-                        firstRowOrColumn, // new RowIndex
-                        threeRowsOrColumns // new RowIndex
+                        lastRowOrColumn, // new RowIndex
+                        threeRowsOrColumnsReverse // new RowIndex
                 );
 
                 clonedCubeState = rubiksRotations.rotateSide(clonedCubeState, cubeState, new int[]{CubeSide.BACK.ordinal(), CubeSide.RIGHT.ordinal()},
@@ -301,14 +301,14 @@ public class RotationRules {
                 clonedCubeState = rubiksRotations.rotateSide(clonedCubeState, cubeState, new int[]{CubeSide.RIGHT.ordinal(), CubeSide.BACK.ordinal()},
                         threeRowsOrColumns, // move RowIndex
                         lastRowOrColumn, // move ColumnIndex
-                        lastRowOrColumn, // new RowIndex
-                        threeRowsOrColumnsReverse // new RowIndex
+                        firstRowOrColumn, // new RowIndex
+                        threeRowsOrColumns // new RowIndex
                 );
 
                 clonedCubeState = rubiksRotations.rotateSide(clonedCubeState, cubeState, new int[]{CubeSide.BACK.ordinal(), CubeSide.LEFT.ordinal()},
                         firstRowOrColumn, // move RowIndex
                         threeRowsOrColumns, // move ColumnIndex
-                        threeRowsOrColumns, // new RowIndex
+                        threeRowsOrColumnsReverse, // new RowIndex
                         firstRowOrColumn // new RowIndex
                 );
 
@@ -369,7 +369,7 @@ public class RotationRules {
                         cubeState, new int[]{CubeSide.FRONT.ordinal(), CubeSide.DOWN.ordinal()},
                         threeRowsOrColumns, // move RowIndex
                         firstRowOrColumn, // move ColumnIndex
-                        threeRowsOrColumns, // move RowIndex
+                        threeRowsOrColumnsReverse, // move RowIndex
                         lastRowOrColumn // move ColumnIndex
                 );
 
@@ -377,13 +377,13 @@ public class RotationRules {
                         cubeState, new int[]{CubeSide.DOWN.ordinal(), CubeSide.BACK.ordinal()},
                         threeRowsOrColumns, // move RowIndex
                         lastRowOrColumn, // move ColumnIndex
-                        threeRowsOrColumns, // new RowIndex
-                        firstRowOrColumn // new RowIndex
+                        threeRowsOrColumnsReverse, // new RowIndex
+                        firstRowOrColumn // new ColumnIndex
                 );
 
                 clonedCubeState = rubiksRotations.rotateSide(clonedCubeState,
                         cubeState, new int[]{CubeSide.BACK.ordinal(), CubeSide.UPPER.ordinal()},
-                        threeRowsOrColumnsReverse, // move RowIndex
+                        threeRowsOrColumns, // move RowIndex
                         firstRowOrColumn, // move ColumnIndex
                         threeRowsOrColumns, // new RowIndex
                         firstRowOrColumn // new RowIndex
