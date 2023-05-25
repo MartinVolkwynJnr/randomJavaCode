@@ -647,4 +647,52 @@ public class RotationRulesTest {
         Assert.assertEquals(CubeColours.WHITE.ordinal(), cubeResult.getLeft()[2][2]);
     }
 
+    @Test
+    public void testPatternRUrURUUr(){
+        //RUrURUUr
+        RubikCycle rubikCycle = new RubikCycle();
+        rubikCycle.cubeState.setDefaultSolvedCube();
+        int result = rubikCycle.getNumberOfSequenceRequiredToOriginalState("RUrURUUr");
+
+        Assert.assertEquals(6,result);
+    }
+    @Test
+    public void testPatternRr(){
+        //RUrURUUr
+        RubikCycle rubikCycle = new RubikCycle();
+        rubikCycle.cubeState.setDefaultSolvedCube();
+        int result = rubikCycle.getNumberOfSequenceRequiredToOriginalState("Rr");
+
+        Assert.assertEquals(1,result);
+    }
+
+    @Test
+    public void testPatternLLL(){
+        //RUrURUUr
+        RubikCycle rubikCycle = new RubikCycle();
+        rubikCycle.cubeState.setDefaultSolvedCube();
+        int result = rubikCycle.getNumberOfSequenceRequiredToOriginalState("LLL");
+
+        Assert.assertEquals(4,result);
+    }
+
+    @Test
+    public void testPatterndl(){
+        //RUrURUUr
+        RubikCycle rubikCycle = new RubikCycle();
+        rubikCycle.cubeState.setDefaultSolvedCube();
+        int result = rubikCycle.getNumberOfSequenceRequiredToOriginalState("dl");
+
+        Assert.assertEquals(105,result);
+    }
+
+    @Test
+    public void testPatternRUUdBd(){
+        //RUrURUUr
+        RubikCycle rubikCycle = new RubikCycle();
+        rubikCycle.cubeState.setDefaultSolvedCube();
+        int result = rubikCycle.getNumberOfSequenceRequiredToOriginalState("RUUdBd");
+
+        Assert.assertEquals(1260,result);
+    }
 }
