@@ -12,12 +12,15 @@ public class RubikCycle {
 
     public static void main(String[] args) {
         RubikCycle rubikCycle = new RubikCycle();
-        String input = "RUrURUUr";
+        String input = "LRUDBFlrudbf";
         rubikCycle.cubeState.setDefaultSolvedCube();
 
         int result = rubikCycle.getNumberOfSequenceRequiredToOriginalState(input);
-
-        System.out.println("Input = " + input + ", " + "Should repeat " + result + " times to get the orginal state");
+        if (result > 0){
+            System.out.println("Input = " + input + ", " + "Should repeat " + result + " times to get the orginal state");
+        }else {
+            System.out.println("String sequence was incorrect or more than 100 000 repetitions required");
+        }
     }
 
     public int getNumberOfSequenceRequiredToOriginalState(String input) {
@@ -26,16 +29,6 @@ public class RubikCycle {
         int[][][] clonedCubeStateOriginal = RubiksRotations.getDeepCloneCubeState(cubeState);
 
         RotationRules rotationRules = new RotationRules();
-
-//        for (int i = 0; i < input.length(); i++) {
-//            // accessing each char
-//            char x = input.charAt(i);
-//            System.out.println(x);
-//            cubeState = rotationRules.rotateSideProvidedLetter(x,cubeState);
-//
-//            System.out.println("CUBE STATE After - " + x + " \n " + cubeState);
-//        }
-//        System.out.println("CUBE STATE After- " + cubeState);
         while (!cubeSolved) {
             count++;
             //looping through each char
@@ -43,13 +36,17 @@ public class RubikCycle {
                 // accessing each char
                 char x = input.charAt(i);
                 cubeState = rotationRules.rotateSideProvidedLetter(x,cubeState);
-
-                System.out.println("CUBE STATE letter - " + x + "\n"+ cubeState);
+                if (cubeState == null){
+                    return -1;
+                }
             }
 
 
-            if (Arrays.deepEquals(clonedCubeStateOriginal,cubeState.getCubeState3DArray()) || count > 100000){
+            if (Arrays.deepEquals(clonedCubeStateOriginal,cubeState.getCubeState3DArray())){
                 cubeSolved = true;
+            }
+            if (count > 100000){
+                return -1;
             }
         }
         return count;

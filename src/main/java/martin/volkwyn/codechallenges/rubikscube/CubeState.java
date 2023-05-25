@@ -47,6 +47,73 @@ public class CubeState {
 
     }
 
+    public void setDefaultMixSolvedCube(){
+        this.setSideFullColour(this.front, CubeColours.YELLOW);
+        this.cubeState3DArray[CubeSide.FRONT.ordinal()][0][0] = CubeColours.ORANGE.ordinal();
+        this.cubeState3DArray[CubeSide.FRONT.ordinal()][0][1] = CubeColours.GREEN.ordinal();
+        this.cubeState3DArray[CubeSide.FRONT.ordinal()][0][2] = CubeColours.YELLOW.ordinal();
+        this.cubeState3DArray[CubeSide.FRONT.ordinal()][1][0] = CubeColours.ORANGE.ordinal();
+        this.cubeState3DArray[CubeSide.FRONT.ordinal()][1][1] = CubeColours.YELLOW.ordinal();
+        this.cubeState3DArray[CubeSide.FRONT.ordinal()][1][2] = CubeColours.WHITE.ordinal();
+        this.cubeState3DArray[CubeSide.FRONT.ordinal()][2][0] = CubeColours.WHITE.ordinal();
+        this.cubeState3DArray[CubeSide.FRONT.ordinal()][2][1] = CubeColours.GREEN.ordinal();
+        this.cubeState3DArray[CubeSide.FRONT.ordinal()][2][2] = CubeColours.GREEN.ordinal();
+
+
+        this.cubeState3DArray[CubeSide.BACK.ordinal()][0][0] = CubeColours.ORANGE.ordinal();
+        this.cubeState3DArray[CubeSide.BACK.ordinal()][0][1] = CubeColours.RED.ordinal();
+        this.cubeState3DArray[CubeSide.BACK.ordinal()][0][2] = CubeColours.YELLOW.ordinal();
+        this.cubeState3DArray[CubeSide.BACK.ordinal()][1][0] = CubeColours.YELLOW.ordinal();
+        this.cubeState3DArray[CubeSide.BACK.ordinal()][1][1] = CubeColours.WHITE.ordinal();
+        this.cubeState3DArray[CubeSide.BACK.ordinal()][1][2] = CubeColours.BLUE.ordinal();
+        this.cubeState3DArray[CubeSide.BACK.ordinal()][2][0] = CubeColours.WHITE.ordinal();
+        this.cubeState3DArray[CubeSide.BACK.ordinal()][2][1] = CubeColours.WHITE.ordinal();
+        this.cubeState3DArray[CubeSide.BACK.ordinal()][2][2] = CubeColours.WHITE.ordinal();
+
+
+        this.cubeState3DArray[CubeSide.LEFT.ordinal()][0][0] = CubeColours.GREEN.ordinal();
+        this.cubeState3DArray[CubeSide.LEFT.ordinal()][0][1] = CubeColours.GREEN.ordinal();
+        this.cubeState3DArray[CubeSide.LEFT.ordinal()][0][2] = CubeColours.RED.ordinal();
+        this.cubeState3DArray[CubeSide.LEFT.ordinal()][1][0] = CubeColours.ORANGE.ordinal();
+        this.cubeState3DArray[CubeSide.LEFT.ordinal()][1][1] = CubeColours.GREEN.ordinal();
+        this.cubeState3DArray[CubeSide.LEFT.ordinal()][1][2] = CubeColours.ORANGE.ordinal();
+        this.cubeState3DArray[CubeSide.LEFT.ordinal()][2][0] = CubeColours.ORANGE.ordinal();
+        this.cubeState3DArray[CubeSide.LEFT.ordinal()][2][1] = CubeColours.BLUE.ordinal();
+        this.cubeState3DArray[CubeSide.LEFT.ordinal()][2][2] = CubeColours.BLUE.ordinal();
+
+        this.cubeState3DArray[CubeSide.RIGHT.ordinal()][0][0] = CubeColours.RED.ordinal();
+        this.cubeState3DArray[CubeSide.RIGHT.ordinal()][0][1] = CubeColours.YELLOW.ordinal();
+        this.cubeState3DArray[CubeSide.RIGHT.ordinal()][0][2] = CubeColours.BLUE.ordinal();
+        this.cubeState3DArray[CubeSide.RIGHT.ordinal()][1][0] = CubeColours.RED.ordinal();
+        this.cubeState3DArray[CubeSide.RIGHT.ordinal()][1][1] = CubeColours.BLUE.ordinal();
+        this.cubeState3DArray[CubeSide.RIGHT.ordinal()][1][2] = CubeColours.RED.ordinal();
+        this.cubeState3DArray[CubeSide.RIGHT.ordinal()][2][0] = CubeColours.ORANGE.ordinal();
+        this.cubeState3DArray[CubeSide.RIGHT.ordinal()][2][1] = CubeColours.BLUE.ordinal();
+        this.cubeState3DArray[CubeSide.RIGHT.ordinal()][2][2] = CubeColours.RED.ordinal();
+
+
+        this.cubeState3DArray[CubeSide.UPPER.ordinal()][0][0] = CubeColours.BLUE.ordinal();
+        this.cubeState3DArray[CubeSide.UPPER.ordinal()][0][1] = CubeColours.ORANGE.ordinal();
+        this.cubeState3DArray[CubeSide.UPPER.ordinal()][0][2] = CubeColours.GREEN.ordinal();
+        this.cubeState3DArray[CubeSide.UPPER.ordinal()][1][0] = CubeColours.GREEN.ordinal();
+        this.cubeState3DArray[CubeSide.UPPER.ordinal()][1][1] = CubeColours.RED.ordinal();
+        this.cubeState3DArray[CubeSide.UPPER.ordinal()][1][2] = CubeColours.YELLOW.ordinal();
+        this.cubeState3DArray[CubeSide.UPPER.ordinal()][2][0] = CubeColours.WHITE.ordinal();
+        this.cubeState3DArray[CubeSide.UPPER.ordinal()][2][1] = CubeColours.WHITE.ordinal();
+        this.cubeState3DArray[CubeSide.UPPER.ordinal()][2][2] = CubeColours.BLUE.ordinal();
+
+
+        this.cubeState3DArray[CubeSide.DOWN.ordinal()][0][0] = CubeColours.RED.ordinal();
+        this.cubeState3DArray[CubeSide.DOWN.ordinal()][0][1] = CubeColours.BLUE.ordinal();
+        this.cubeState3DArray[CubeSide.DOWN.ordinal()][0][2] = CubeColours.YELLOW.ordinal();
+        this.cubeState3DArray[CubeSide.DOWN.ordinal()][1][0] = CubeColours.WHITE.ordinal();
+        this.cubeState3DArray[CubeSide.DOWN.ordinal()][1][1] = CubeColours.ORANGE.ordinal();
+        this.cubeState3DArray[CubeSide.DOWN.ordinal()][1][2] = CubeColours.YELLOW.ordinal();
+        this.cubeState3DArray[CubeSide.DOWN.ordinal()][2][0] = CubeColours.YELLOW.ordinal();
+        this.cubeState3DArray[CubeSide.DOWN.ordinal()][2][1] = CubeColours.RED.ordinal();
+        this.cubeState3DArray[CubeSide.DOWN.ordinal()][2][2] = CubeColours.GREEN.ordinal();
+    }
+
     private void setSideFullColour(int[][] inputSide, CubeColours colourToFillSide){
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){

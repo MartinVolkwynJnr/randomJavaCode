@@ -8,10 +8,13 @@ public class RotationRules {
     }
 
     public CubeState rotateSideProvidedLetter(Character sideRotating, CubeState cubeState) {
-        int[] threeRowsOrColumns = new int[]{RowColumnIndex.FIRST.ordinal(), RowColumnIndex.MID.ordinal(), RowColumnIndex.LAST.ordinal()};
-        int[] threeRowsOrColumnsReverse = new int[]{RowColumnIndex.LAST.ordinal(), RowColumnIndex.MID.ordinal(), RowColumnIndex.FIRST.ordinal()};
-        int[] firstRowOrColumn = new int[]{RowColumnIndex.FIRST.ordinal(), RowColumnIndex.FIRST.ordinal(), RowColumnIndex.FIRST.ordinal()};
-        int[] lastRowOrColumn = new int[]{RowColumnIndex.LAST.ordinal(), RowColumnIndex.LAST.ordinal(), RowColumnIndex.LAST.ordinal()};
+        int first = 0;
+        int mid = 1;
+        int last = 2;
+        int[] threeRowsOrColumns = new int[]{first, mid, last};
+        int[] threeRowsOrColumnsReverse = new int[]{last, mid, first};
+        int[] firstRowOrColumn = new int[]{first, first, first};
+        int[] lastRowOrColumn = new int[]{last, last, last};
 
         int[][][] clonedCubeState = RubiksRotations.getDeepCloneCubeState(cubeState);
 
@@ -105,7 +108,7 @@ public class RotationRules {
                 clonedCubeState = rubiksRotations.rotateSide(clonedCubeState, cubeState, new int[]{CubeSide.BACK.ordinal(), CubeSide.RIGHT.ordinal()},
                         firstRowOrColumn, // move RowIndex
                         threeRowsOrColumns, // move ColumnIndex
-                        threeRowsOrColumnsReverse, // new RowIndex
+                        threeRowsOrColumns, // new RowIndex
                         lastRowOrColumn // new RowIndex
                 );
 
@@ -168,14 +171,14 @@ public class RotationRules {
                 clonedCubeState = rubiksRotations.rotateSide(clonedCubeState, cubeState, new int[]{CubeSide.BACK.ordinal(), CubeSide.DOWN.ordinal()},
                         threeRowsOrColumns, // move RowIndex
                         firstRowOrColumn, // move ColumnIndex
-                        threeRowsOrColumns, // new RowIndex
+                        threeRowsOrColumnsReverse, // new RowIndex
                         lastRowOrColumn // new RowIndex
                 );
 
                 clonedCubeState = rubiksRotations.rotateSide(clonedCubeState, cubeState, new int[]{CubeSide.DOWN.ordinal(), CubeSide.FRONT.ordinal()},
                         threeRowsOrColumns, // move RowIndex
                         lastRowOrColumn, // move ColumnIndex
-                        threeRowsOrColumns, // new RowIndex
+                        threeRowsOrColumnsReverse, // new RowIndex
                         firstRowOrColumn // new RowIndex
                 );
 
@@ -242,7 +245,7 @@ public class RotationRules {
                 clonedCubeState = rubiksRotations.rotateSide(clonedCubeState, cubeState, new int[]{CubeSide.BACK.ordinal(), CubeSide.RIGHT.ordinal()},
                         lastRowOrColumn, // move RowIndex
                         threeRowsOrColumns, // move ColumnIndex
-                        threeRowsOrColumnsReverse, // new RowIndex
+                        threeRowsOrColumns, // new RowIndex
                         firstRowOrColumn // new RowIndex
                 );
 
@@ -334,7 +337,7 @@ public class RotationRules {
                 clonedCubeState = rubiksRotations.rotateSide(clonedCubeState, cubeState, new int[]{CubeSide.BACK.ordinal(), CubeSide.DOWN.ordinal()},
                         threeRowsOrColumns, // move RowIndex
                         lastRowOrColumn, // move ColumnIndex
-                        threeRowsOrColumns, // new RowIndex
+                        threeRowsOrColumnsReverse, // new RowIndex
                         firstRowOrColumn // new RowIndex
                 );
 
@@ -425,6 +428,8 @@ public class RotationRules {
                 clonedCubeState = rubiksRotations.rotateSingleSide9Pieces(clonedCubeState, cubeState, CubeSide.BACK, false);
                 break;
             }
+            default:
+                return null;
         }
         CubeState newCubeState = new CubeState();
         newCubeState.setCubeState3DArray(clonedCubeState);
